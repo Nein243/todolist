@@ -2,7 +2,8 @@
 require_once 'header.php';
 require_once 'nav.php';
 ?>
-<main>
+
+    <h1 class="main-header">Done tasks</h1>
     <div class="task-grid">
         <?php require "done_task.php";?>
     </div>

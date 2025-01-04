@@ -11,15 +11,12 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
     <li class="navigation-row category-row" style="background-color: <?= $category['color'] ?>">
         <a href="category-page.php?id=<?= $category['id']?>"><?=$category['title'];?></a>
         <div class="category-setting">
-            <form action="" method="post" >
-                <input type="hidden" value="<?= $category['id'] ?>" name="id">
-                <button type="submit" name="submit" title="Edit" data-category-id="<?= $category['id'] ?>"
+                <button title="Edit" data-category-id="<?= $category['id'] ?>" data-category-title="<?= $category['title']?>" data-category-color="<?= $category['color']?>"
                         class="task-setting_object edit-category-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 16 16">
                         <path d="M 12.03125 2.023438 C 11.535156 2.023438 11.066406 2.269531 10.675781 2.65625 L 2.5625 10.726563 L 1.207031 14.785156 L 5.265625 13.433594 L 5.351563 13.351563 L 13.386719 5.367188 C 13.773438 4.976563 14.015625 4.507813 14.015625 4.011719 C 14.015625 3.515625 13.773438 3.046875 13.386719 2.65625 C 12.996094 2.269531 12.527344 2.023438 12.03125 2.023438 Z M 10.027344 4.710938 L 11.320313 6.007813 L 4.726563 12.5625 L 2.789063 13.207031 L 3.4375 11.265625 Z"></path>
                     </svg>
                 </button>
-            </form>
             <form action="handler/delete-category_handler.php" class="delete-category" method="post">
                 <input type="hidden" value="<?= $category['id'] ?>" name="id">
                 <button type="submit" title="Delete" name="submit" class="task-setting_object">
@@ -32,13 +29,14 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 
         </div>
     </li>
-    <div class="edit-category">
-        <form action="handler/add_category_handler.php" style="display: none;" id="edit-form-<?= $category['id'] ?>"
+<?php endforeach; ?>
+    <div class="edit-category hide">
+        <form action="handler/add_category_handler.php"  id="edit-category-form"
               method="post" class="add-category">
             <label for="title">Edit category name</label>
-            <input type="text" id="category-name" name="title" required>
+            <input type="text" id="category-name" class="category-title_edit" name="title" required>
             <label for="color">Choose category color</label>
-            <input type="color" name="color" id="color" value="<?= $category['color'] ?>" class="category-color">
+            <input type="color" name="color" id="color" value="" class="category-color_edit">
 
             <div class="task-setting_object">
                 <button type="submit" title="Submit" name="submit" id="submit" class="task-button">
@@ -50,6 +48,5 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </form>
     </div>
-<?php endforeach; ?>
 </div>
 

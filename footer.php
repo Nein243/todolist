@@ -4,5 +4,6 @@
 <script src="js/add-category.js"></script>
 <script src="js/delete-category.js"></script>
 <script src="js/edit-category-show.js"></script>
+<script src="js/edit-category.js"></script>
 </body>
 </html>

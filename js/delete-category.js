@@ -10,7 +10,7 @@ $(document).ready( () => {
         })
             .done(function (msg) {
                 category.hide();
-                $('#category_deleted').show();
+                $('#category_deleted').removeClass('hide');
             })
             .fail(function ( msg ){
                 console.log( msg )

@@ -52,7 +52,7 @@ $(document).ready(() => {
                             console.log( msg )
                         });
                 })
-                $('#warning-hidden').show();
+                $('#category_added').removeClass('hide');
 
             })
             .fail(function (msg) {

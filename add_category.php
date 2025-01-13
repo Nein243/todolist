@@ -1,5 +1,5 @@
 <div class="add-category_hidden">
-    <form action="handler/add_category_handler.php" id="add-category" method="post" class="add-category">
+    <form action="handler/add_category_handler.php" id="add-category" method="post" class="add-category category-form">
         <label for="title">Enter category name</label>
         <input type="text" id="category-name" name="title" class="category-name" required>
         <label for="color">Choose category color</label>

@@ -16,6 +16,6 @@ $(document).ready(function (){
 });
 $(document).ready(function (){
     $(".category-warning-button").click(function (){
-        $(".warning").addClass("hide");
+        $(".warning-window").addClass("hide");
     });
 });

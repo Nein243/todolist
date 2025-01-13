@@ -8,8 +8,8 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="nav-categories">
 <?php foreach ($categories as $category):?>
-    <li class="navigation-row category-row" style="background-color: <?= $category['color'] ?>">
-        <a href="category-page.php?id=<?= $category['id']?>"><?=$category['title'];?></a>
+    <li class="navigation-row category-row"data-category-id="<?= $category['id'] ?>"  style="background-color: <?= $category['color'] ?>">
+        <a href="category-page.php?id=<?= $category['id']?>" ><?=$category['title'];?></a>
         <div class="category-setting">
                 <button title="Edit" data-category-id="<?= $category['id'] ?>" data-category-title="<?= $category['title']?>" data-category-color="<?= $category['color']?>"
                         class="task-setting_object edit-category-btn">
@@ -31,12 +31,13 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
     </li>
 <?php endforeach; ?>
     <div class="edit-category hide">
-        <form action="handler/add_category_handler.php"  id="edit-category-form"
-              method="post" class="add-category">
+        <form action="handler/edit_category_handler.php"  id="edit-category-form"
+              method="post" class="edit-category category-form">
+            <input type="hidden" value="" class="category-id_edit" name="id">
             <label for="title">Edit category name</label>
-            <input type="text" id="category-name" class="category-title_edit" name="title" required>
+            <input type="text" id="category-name" class="category-title_edit  category-name" name="title" required>
             <label for="color">Choose category color</label>
-            <input type="color" name="color" id="color" value="" class="category-color_edit">
+            <input type="color" name="color" id="color" value="" class="category-color_edit category-color">
 
             <div class="task-setting_object">
                 <button type="submit" title="Submit" name="submit" id="submit" class="task-button">

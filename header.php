@@ -36,6 +36,12 @@
         <button class="category-warning-button yellow-button">OK</button>
     </div>
 </div>
+<div class="warning-window hide" id="category_edited">
+    <div class="warning">
+        <div class="warning-content">Category has been successfully edited</div>
+        <button class="category-warning-button yellow-button">OK</button>
+    </div>
+</div>
 
 
 

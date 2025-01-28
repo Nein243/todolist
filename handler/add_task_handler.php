@@ -1,7 +1,8 @@
 <?php
 session_start();
+require_once 'function.php';
 if(isset($_POST['submit'])){
-    $pdo = new PDO('mysql:host=localhost;dbname=todolist','root', '');
+    $pdo = getPDO();
     $query = $pdo->prepare('INSERT INTO tasks(title, text, category_id, user_id) VALUES (:title, :text, :category_id, :user_id)');
     $query->execute([
         'title' => $_POST['title'],

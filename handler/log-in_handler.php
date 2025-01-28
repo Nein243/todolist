@@ -1,7 +1,8 @@
 <?php
 session_start();
+require_once 'function.php';
 if (isset($_POST['submit'])) {
-    $pdo = new PDO('mysql:host=localhost;dbname=todolist', 'root', '');
+    $pdo = getPDO();
     $query = $pdo->prepare('SELECT * FROM users WHERE login = :login');
     $query->execute([
         'login' => $_POST['login']

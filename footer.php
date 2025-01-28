@@ -5,5 +5,6 @@
 <script src="js/delete-category.js"></script>
 <script src="js/edit-category-show.js"></script>
 <script src="js/edit-category.js"></script>
+<script src="js/done-task.js"></script>
 </body>
 </html>

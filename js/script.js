@@ -3,6 +3,11 @@ $(document).ready(function(){
         $(".add-category_hidden").slideToggle(500);
     });
 });
+$(document).ready(function(){
+    $("#add-team_link").click(function(){
+        $(".add-team_hidden").slideToggle(500);
+    });
+});
 
 $(document).ready(function(){
     $(".user-registration_link").click(function(){

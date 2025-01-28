@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'function.php';
 $login = $_POST['login'];
 $password = $_POST['password'];
 $name = $_POST['name'];
@@ -28,7 +29,7 @@ if ($hasError){
     header('location:../registration.php');
     exit;
 }
-$pdo = new PDO('mysql:host=localhost;dbname=todolist', 'root', '');
+$pdo = getPDO();
 $query = $pdo->prepare('SELECT login FROM users WHERE login = :login');
 $query->execute([
     'login' => $login

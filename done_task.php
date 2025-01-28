@@ -1,5 +1,6 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=todolist', 'root', '');
+require_once 'handler/function.php';
+$pdo = getPDO();
 $query = $pdo->prepare('SELECT tasks.id, tasks.title, tasks.text, categories.color FROM tasks INNER JOIN categories ON tasks.category_id=categories.id WHERE tasks.status = "done" AND tasks.user_id = :user_id');
 $query->execute([
     'user_id' => $_SESSION['id']

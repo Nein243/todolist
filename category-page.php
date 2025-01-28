@@ -1,11 +1,12 @@
 <?php
 session_start();
+require_once 'handler/function.php';
 if (!isset($_GET['id'])) {
     $_SESSION['warning'] = 'You are not allowed there';
     header('location:index.php');
     exit;
 }
-    $pdo = new PDO('mysql:host=localhost;dbname=todolist', 'root', '');
+    $pdo = getPDO();
     $query = $pdo->prepare('SELECT categories.title AS category_title, categories.color,  tasks.id, tasks.text, tasks.title FROM categories INNER JOIN tasks ON categories.id = tasks.category_id WHERE category_id = :category_id AND  tasks.status = "new"');
     $query->execute([
         'category_id' => $_GET['id']

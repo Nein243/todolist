@@ -183,6 +183,9 @@ button{
 .add-category_hidden{
     display: none;
 }
+.add-team_hidden{
+    display: none;
+}
 .add-category-group_hidden{
     display: none;
 }

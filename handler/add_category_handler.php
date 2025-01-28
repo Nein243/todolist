@@ -1,7 +1,8 @@
 <?php
 session_start();
+require_once 'function.php';
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $pdo = new PDO('mysql:host=localhost;dbname=todolist', 'root', '');
+    $pdo = getPDO();
     $query = $pdo->prepare('INSERT INTO categories(title, color, user_id) VALUES (:title, :color, :user_id)');
     $query->execute([
         'title' => $_POST['title'],

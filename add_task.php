@@ -1,6 +1,7 @@
 <?php
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=todolist', 'root', '');
+require_once 'handler/function.php';
+$pdo = getPDO();
 $query = $pdo->prepare('SELECT * FROM categories WHERE user_id = :user_id');
 $query->execute([
         'user_id' => $_SESSION['id']

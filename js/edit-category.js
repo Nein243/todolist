@@ -6,7 +6,6 @@ $(document).ready( () => {
         let title = $(this).closest('form').find('.category-title_edit').val();
         let id = $(this).closest('form').find('.category-id_edit').val();
         let category = $(`[data-category-id='${id}']`);
-
         $.ajax({
             method: 'POST',
             url: $(this).attr('action'),

@@ -42,6 +42,13 @@
         <button class="category-warning-button yellow-button">OK</button>
     </div>
 </div>
+<div class="warning-window hide" id="team_added">
+    <div class="warning">
+        <div class="warning-content">Team has been successfully added</div>
+        <button class="category-warning-button yellow-button">OK</button>
+    </div>
+</div>
+
 
 
 

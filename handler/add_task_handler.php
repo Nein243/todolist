@@ -11,5 +11,5 @@ if(isset($_POST['submit'])){
         'user_id' => $_SESSION['id']
     ]);
 }
-header('location:../index.php');
-exit;
+redirect('../index');
+

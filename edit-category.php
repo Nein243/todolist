@@ -6,6 +6,6 @@ if (isset($_POST['id'])){
     $_SESSION['category_edit'] = true;
     require_once 'footer.php';
 } else {
-    header('location:index.php');
-    exit;
+    redirect('index');
+
 }

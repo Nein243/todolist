@@ -2,11 +2,7 @@
 require_once 'handler/function.php';
 if (isset($_GET['id'])):;
 $pdo = getPDO();
-$query = $pdo->prepare('SELECT * FROM tasks WHERE id = :id');
-$query->execute([
-    'id' => $_GET['id'],
-]);
-$task = $query->fetch(PDO::FETCH_ASSOC);
+$task = getOneById('tasks', $_GET['id']);
 require_once 'header.php';
 require_once 'nav.php';
 
@@ -47,7 +43,6 @@ require_once 'nav.php';
         require_once 'footer.php';
 
         else:
-            header('location:index.php');
-            exit();
+            redirect('index');
         endif;
         ?>

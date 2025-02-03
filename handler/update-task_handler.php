@@ -10,5 +10,5 @@ if (isset($_POST['submit'])){
         'category_id' => $_POST['category_id']
     ]);
 }
-header('location:../index.php');
-exit;
+redirect('../index');
+

@@ -3,8 +3,7 @@ session_start();
 require_once 'handler/function.php';
 if (!isset($_GET['id'])) {
     $_SESSION['warning'] = 'You are not allowed there';
-    header('location:index.php');
-    exit;
+    redirect('index');
 }
     $pdo = getPDO();
     $query = $pdo->prepare('SELECT categories.title AS category_title, categories.color,  tasks.id, tasks.text, tasks.title FROM categories INNER JOIN tasks ON categories.id = tasks.category_id WHERE category_id = :category_id AND  tasks.status = "new"');
@@ -14,8 +13,7 @@ if (!isset($_GET['id'])) {
     $tasks = $query->fetchAll(PDO::FETCH_ASSOC);
 if (!$tasks){
     $_SESSION['warning'] = 'There are no tasks with this category';
-    header('location:index.php');
-    exit;
+        redirect('index');
 }
 $title = $tasks[0]['category_title'];
 require_once 'header.php';

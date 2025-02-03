@@ -7,4 +7,5 @@ if (isset($_GET['id'])){
         'id' => $_GET['id']
     ]);
 }
-header('location:../deleted_list.php');
+redirect('../deleted_list');
+

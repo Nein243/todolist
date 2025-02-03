@@ -15,6 +15,8 @@ $(document).ready( () => {
                 category.find('a').text(title);
                 category.css('background-color', color);
                 $('#category_edited').removeClass('hide');
+                $('.edit-category').hide();
+
             })
     })
 })

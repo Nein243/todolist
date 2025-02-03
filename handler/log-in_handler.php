@@ -14,12 +14,11 @@ if (isset($_POST['submit'])) {
             $_SESSION['password'] = $_POST['password'];
             $_SESSION['id'] = $user['id'];
             $_SESSION['name'] = $user['name'];
-            header("location:../index.php");
-            exit;
+            redirect('../index');
+
         }
     }
         $_SESSION['warning'] = 'Login or password is incorrect';
-        header('location:../log-in.php');
-        exit;
+    redirect('../log-in');
 
 }

@@ -26,8 +26,8 @@ if ($_POST['password_confirm'] !== $password) {
 }
 if ($hasError){
     $_SESSION['warning'] = $errors;
-    header('location:../registration.php');
-    exit;
+    redirect('../registration');
+
 }
 $pdo = getPDO();
 $query = $pdo->prepare('SELECT login FROM users WHERE login = :login');
@@ -37,8 +37,7 @@ $query->execute([
 $checkLogin = $query->fetch(PDO::FETCH_ASSOC);
 if ($checkLogin) {
    $_SESSION['warning'] = 'Login has been already taken';
-    header('location:../registration.php');
-    exit;
+    redirect('../registration');
 }
 $query = $pdo->prepare('INSERT INTO users (login, name, password) VALUES (:login, :name, :password)');
 $query->execute([
@@ -58,5 +57,5 @@ $_SESSION['id'] = $user['id'];
 $_SESSION['name'] = $name;
 
 $_SESSION['warning'] = 'You have been successfully signed up!';
-header('location:../index.php');
-exit;
+redirect('../index');
+

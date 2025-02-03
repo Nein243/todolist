@@ -10,5 +10,5 @@ if (isset($_POST['id'])){
         'color' => $_POST['color']
     ]);
 }
-header('location:../index.php');
-exit;
+redirect('../index');
+

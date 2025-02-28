@@ -13,6 +13,7 @@
         <ul class="navigation-section">
             <li class="navigation-id">Your ID: <?=$_SESSION['id']?></li>
             <li class="navigation-row">Settings</li>
+            <li class="navigation-row"><a href="invite-team-list.php">Invitations<span>2</span></a></li>
             <li class="navigation-row"><a href="handler/log-out.php">Log out</a></li>
         </ul>
     </div>

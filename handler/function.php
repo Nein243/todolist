@@ -97,7 +97,9 @@ function changeInviteStatusToAccept(int $idUser, int $idTeam): void
 
     ]);
 }
-function acceptInvite (int $idUser, int $idTeam): void{
+
+function acceptInvite(int $idUser, int $idTeam): void
+{
     $query = getPDO()->
     prepare('
                 INSERT INTO teams_to_users (id_user, id_team, status)
@@ -108,7 +110,9 @@ function acceptInvite (int $idUser, int $idTeam): void{
         'id_team' => $idTeam
     ]);
 }
-function declineInvite (int $idUser, int $idTeam): void{
+
+function declineInvite(int $idUser, int $idTeam): void
+{
     $query = getPDO()->
     prepare('
                     DELETE FROM teams_invite
@@ -120,4 +124,18 @@ function declineInvite (int $idUser, int $idTeam): void{
         'id_team' => $idTeam
 
     ]);
+}
+
+function countInvitesNumber(int $idUser): int
+{
+    $query = getPDO()->
+    prepare('
+                SELECT COUNT(*) FROM teams_invite
+                WHERE id_user = :id_user
+                AND status = "sent"
+');
+    $query->execute([
+        'id_user' => $idUser
+    ]);
+    return $query->fetchColumn();
 }

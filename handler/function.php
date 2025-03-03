@@ -44,12 +44,12 @@ function getNameOwnerTeamByID(int $ownerId): string
     return $query->fetch(PDO::FETCH_COLUMN);
 }
 
-function isExistTeamInvite(int $id_user, int $id_team, string $status = 'sent'): bool
+function isExistTeamInvite(int $idUser, int $idTeam, string $status = 'sent'): bool
 {
     $query = getPDO()->prepare('SELECT id FROM teams_invite WHERE id_user=:id_user AND id_team=:id_team AND status=:status');
     $query->execute([
-        'id_user' => $id_user,
-        'id_team' => $id_team,
+        'id_user' => $idUser,
+        'id_team' => $idTeam,
         'status' => $status
     ]);
     return $query->fetch(PDO::FETCH_COLUMN);
@@ -60,25 +60,25 @@ function setMessage(string $message): void
     $_SESSION['warning'] = $message;
 }
 
-function sendInvite(int $id_user, int $id_team): void
+function sendInvite(int $idUser, int $idTeam): void
 {
     $query = getPDO()->prepare('
         INSERT INTO teams_invite(id_user, id_team, status) 
         VALUES (:id_user, :id_team, "sent" ) 
 ');
     $query->execute([
-        'id_user' => $id_user,
-        'id_team' => $id_team
+        'id_user' => $idUser,
+        'id_team' => $idTeam
     ]);
 }
 
-function getUserIdByLogin(string $id_user): int
+function getUserIdByLogin(string $idUser): int
 {
     $query = getPDO()->
     prepare('
     SELECT id FROM users WHERE login=:id_user
 ');
-    $query->execute(['id_user' => $id_user]);
+    $query->execute(['id_user' => $idUser]);
     return $query->fetch(PDO::FETCH_COLUMN);
 }
 

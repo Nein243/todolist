@@ -2,17 +2,18 @@
 session_start();
 require_once 'function.php';
 if (isset($_POST['submit'])) {
-    //TODO id_user -> idUser everywhere!
-    $id_user = $_POST['id_user'];
-    $id_team = $_POST['id_team'];
+    $idUser = (int) $_POST['id_user'];
+    $idTeam = $_POST['id_team'];
+
     try {
-        if (!is_int($id_user)) {
-            $id_user = getUserIdByLogin($id_user);
+        if (!is_int($idUser)) {
+            $idUser = getUserIdByLogin($idUser);
+
         }
-        if (isExistTeamInvite($id_user, $id_team)) {
+        if (isExistTeamInvite($idUser, $idTeam)) {
             setMessage('The user already has already received your invitation');
         } else {
-            sendInvite($id_user, $id_team);
+            sendInvite($idUser, $idTeam);
             setMessage('The user has received your invitation');
 
 
@@ -25,6 +26,6 @@ if (isset($_POST['submit'])) {
 }
 
 
-redirectToId('../team-view', $id_team);
+redirectToId('../team-view', $idTeam);
 
 

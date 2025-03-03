@@ -20,14 +20,20 @@ $invites = $query->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($invites as $invite): ?>
             <div class="invite_item">
                 <div class="invite_header"><?= $invite['title'] ?></div>
-                <form action="handler/invite_handler.php" method="post" class="invite-form">
+                <form action="handler/accept-invite_handler.php" method="post"
+                      class="invite-form">
                     <input type="hidden" name="idTeam"
                            value="<?= $invite['id_team'] ?>">
-                    <button type="submit" name="action" value="accept"
+                    <button name="accept" type="submit"
                             class="invite-btn invite-btn-accept">
                         Accept
                     </button>
-                    <button type="submit" name="action" value="decline"
+                </form>
+                <form action="handler/decline-invite_handler.php" method="post"
+                      class="invite-form">
+                    <input type="hidden" name="idTeam"
+                           value="<?= $invite['id_team'] ?>">
+                    <button name="decline" type="submit"
                             class="invite-btn invite-btn-decline">
                         Decline
                     </button>

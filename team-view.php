@@ -6,8 +6,7 @@ $team = getOneById('teams', $_GET['id']);
 $ownerId = $team['owner_id'];
 $isTeamOwner = isTeamOwner($_SESSION['id'], $ownerId);
 if (!$isTeamOwner) {
-//TODO СДЕЛАТЬ РЕДИРЕКТ НА СТРАНИЦУ 404
-    redirect('deleted_list');
+    redirect('not-found');
 }
 ?>
     <h1 class="main-header">Team <?= $team['title'] ?></h1>

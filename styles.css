@@ -474,6 +474,40 @@ button{
     background: #E53935;
 }
 
+.not-found_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.not-found_header {
+    font-size: 72px;
+    color: #ffcc00;
+    margin-bottom: 10px;
+}
+.not-found_text {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.not-found_link {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #ffcc00;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+.not-found_link:hover {
+    background: #e6b800;
+}
+
 
 
 

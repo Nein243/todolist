@@ -2,8 +2,9 @@
 session_start();
 require_once 'function.php';
 if (isset($_POST['submit'])) {
-    $idUser = (int) $_POST['id_user'];
+    $idUser = (int)$_POST['id_user'];
     $idTeam = $_POST['id_team'];
+//TODO проверка на владельца
 
     try {
         if (!is_int($idUser)) {

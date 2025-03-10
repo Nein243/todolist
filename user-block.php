@@ -8,6 +8,7 @@
         </div>
         <div class="user-content">
             <span class="user-registration_link"><?= $_SESSION['login'] ?></span>
+            <span class="red"></span>
         </div>
     </div>
     <div class="user-hidden">

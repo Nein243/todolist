@@ -246,6 +246,10 @@ button{
 .login_link{
     text-decoration: underline;
 }
+.user-content{
+    display: flex;
+    align-items: center;
+}
 .user-content span{
     margin: 0 5px;
 }
@@ -506,6 +510,14 @@ button{
 }
 .not-found_link:hover {
     background: #e6b800;
+}
+
+.red{
+    border-radius: 5px;
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: red;
 }
 
 

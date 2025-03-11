@@ -42,6 +42,12 @@ main {
     margin-left: 25px;
     font-size: 32px;
 }
+.minor-header {
+    color: #2B2B2B;
+    margin-top: 20px;
+    margin-left: 25px;
+    font-size: 24px;
+}
 button{
     border: none;
     background-color: transparent;
@@ -60,7 +66,7 @@ button{
 
 .section-header {
     font-size: 16px;
-    padding: 18px 0px 5px 0px;
+    padding: 18px 0 5px 0;
     color: #333333;
 }
 
@@ -518,6 +524,58 @@ button{
     width: 5px;
     height: 5px;
     background-color: red;
+}
+.team-addition_summary{
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    border: #d0d0d0 1px solid;
+    width: 155px;
+    padding: 7px;
+    text-align: center;
+    margin: 10px 25px;
+    cursor: pointer;
+}
+.team-addition{
+    background-color: #f1f1f1;
+    width: 33%;
+    padding: 10px 5px;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+.shared-category_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.shared-category_item {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.shared-category_header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.shared-category_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.shared-category_link {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 5px 0;
+}
+
+.shared-category_link:hover {
+    text-decoration: underline;
 }
 
 

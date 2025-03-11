@@ -17,6 +17,18 @@ function getOneById(string $table, int $id): array
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
+function getAllById(string $table, int $id): array
+{
+    $query = getPDO()->prepare("
+                    SELECT * FROM {$table}
+                    WHERE owner_id = :id
+                    ");
+    $query->execute([
+        'id' => $id
+    ]);
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function isTeamOwner(int $userId, int $ownerId): bool
 {
     if ($userId === $ownerId) {
@@ -39,14 +51,23 @@ function redirectToId(string $url, int $id): void
 
 function getNameOwnerTeamByID(int $ownerId): string
 {
-    $query = getPDO()->prepare('SELECT name FROM users WHERE id=:id');
+    $query = getPDO()->prepare('
+                            SELECT name FROM users
+                            WHERE id=:id
+');
     $query->execute(['id' => $ownerId]);
     return $query->fetch(PDO::FETCH_COLUMN);
 }
 
 function isExistTeamInvite(int $idUser, int $idTeam, string $status = 'sent'): bool
 {
-    $query = getPDO()->prepare('SELECT id FROM teams_invite WHERE id_user=:id_user AND id_team=:id_team AND status=:status');
+    $query = getPDO()->prepare('
+                                    SELECT id 
+                                    FROM teams_invite 
+                                    WHERE id_user=:id_user 
+                                    AND id_team=:id_team 
+                                    AND status=:status
+  ');
     $query->execute([
         'id_user' => $idUser,
         'id_team' => $idTeam,
@@ -139,3 +160,41 @@ function countInvitesNumber(int $idUser): int
     ]);
     return $query->fetchColumn();
 }
+
+function getSharedTeamsByUserId(int $id): array
+{
+    $query = getPDO()->prepare('
+                            SELECT teams.title, teams.id FROM teams 
+                            JOIN teams_to_users 
+                            ON  teams.id=teams_to_users.id_team
+                            WHERE teams_to_users.id_user=:idUser
+                           ');
+    $query->execute([
+        'idUser' => $id
+    ]);
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function isTeamMember(int $idUser, int $idTeam): bool
+{
+    $query = getPDO()->prepare('
+    SELECT * FROM teams_to_users
+    WHERE id_user=:idUser
+    AND id_team=:idTeam
+    ');
+    $query->execute([
+        'idUser' => $idUser,
+        'idTeam' => $idTeam
+    ]);
+    return !empty($query->fetchAll(PDO::FETCH_ASSOC));
+}
+//function checkAccessToTeam(int $userId, int $ownerId, int $teamId): bool{
+//    if (isTeamOwner($userId, $ownerId)){
+//        return true;
+//    }
+//
+//    if (isTeamMember($userId, $teamId)){
+//        return true;
+//    }
+//    return false;
+//}

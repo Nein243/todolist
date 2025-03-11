@@ -1,7 +1,9 @@
 <?php
 require_once 'handler/function.php';
-$pdo = getPDO();
-$query = $pdo->prepare('SELECT * FROM categories WHERE user_id = :user_id');
+$query = getPDO()->prepare('
+                            SELECT * FROM categories
+                            WHERE user_id = :user_id
+                            ');
 $query->execute([
     'user_id' => $_SESSION['id']
 ]);
@@ -9,7 +11,7 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="nav-categories">
 <?php foreach ($categories as $category):?>
-    <li class="navigation-row category-row"data-category-id="<?= $category['id'] ?>"  style="background-color: <?= $category['color'] ?>">
+    <li class="navigation-row category-row" data-category-id="<?= $category['id'] ?>"  style="background-color: <?= $category['color'] ?>">
         <a href="category-page.php?id=<?= $category['id']?>" ><?=$category['title'];?></a>
         <div class="category-setting">
                 <button title="Edit" data-category-id="<?= $category['id'] ?>" data-category-title="<?= $category['title']?>" data-category-color="<?= $category['color']?>"

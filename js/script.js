@@ -24,3 +24,11 @@ $(document).ready(function (){
         $(".warning-window").addClass("hide");
     });
 });
+
+$(document).ready(function() {
+    $('#addSharedCategoryCell').click(function() {
+        $('.add-shared-category_form').removeClass('hide')
+
+        });
+    });
+

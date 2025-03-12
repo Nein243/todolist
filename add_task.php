@@ -1,19 +1,16 @@
 <?php
 session_start();
 require_once 'handler/function.php';
-$pdo = getPDO();
-$query = $pdo->prepare('SELECT * FROM categories WHERE user_id = :user_id');
-$query->execute([
-        'user_id' => $_SESSION['id']
-]);
-$result = $query->fetchAll(PDO::FETCH_ASSOC);
 
+$categories = getAllById('categories', 'user_id', $_SESSION['id']);
+$sharedCategories = getAllById('shared_categories', 'user_id', $_SESSION['id']);
+$allCategories = array_merge($categories, $sharedCategories);
 $title = 'Add task';
 require_once "header.php";
 require_once 'nav.php';
 ?>
     <h1 class="main-header">Add a task</h1>
- <?php if (empty($result)): ?>
+ <?php if (empty($allCategories)): ?>
     <h2 class="">Create a category before making a task</h2>
 <?php else:?>
     <div class="task-item task-item_form">
@@ -25,7 +22,7 @@ require_once 'nav.php';
             <div class="task-form_row">
                 <label for="category_id" class="task-form_label">Select task category</label>
                 <select name="category_id" id="category_id" class="task-form_text">
-                    <?php foreach ($result as $category): ?>
+                    <?php foreach ($allCategories as $category): ?>
                         <option value="<?= $category['id'] ?>"><?= $category['title'] ?></option>
                     <?php endforeach; ?>
                 </select>

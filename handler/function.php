@@ -17,11 +17,11 @@ function getOneById(string $table, int $id): array
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
-function getAllById(string $table, int $id): array
+function getAllById(string $table, string $column, int $id): array
 {
     $query = getPDO()->prepare("
                     SELECT * FROM {$table}
-                    WHERE owner_id = :id
+                    WHERE $column = :id
                     ");
     $query->execute([
         'id' => $id
@@ -188,6 +188,7 @@ function isTeamMember(int $idUser, int $idTeam): bool
     ]);
     return !empty($query->fetchAll(PDO::FETCH_ASSOC));
 }
+
 //function checkAccessToTeam(int $userId, int $ownerId, int $teamId): bool{
 //    if (isTeamOwner($userId, $ownerId)){
 //        return true;
@@ -198,3 +199,33 @@ function isTeamMember(int $idUser, int $idTeam): bool
 //    }
 //    return false;
 //}
+
+function insertCategory(string  $table, string $title,
+                        string  $color, int $userId,
+                        ?string $teamId = null): void
+{
+    if ($teamId !== null) {
+        $query = getPDO()->prepare("
+                INSERT INTO $table(title, color, user_id, team_id)
+                VALUES (:title, :color, :user_id, :team_id)
+                ");
+        $query->execute([
+            'title' => $title,
+            'color' => $color,
+            'user_id' => $userId,
+            'team_id' => $teamId
+        ]);
+    } else {
+        $query = getPDO()->prepare("
+                INSERT INTO $table(title, color, user_id)
+                VALUES (:title, :color, :user_id)
+                ");
+        $query->execute([
+            'title' => $title,
+            'color' => $color,
+            'user_id' => $userId
+        ]);
+    }
+}
+
+;

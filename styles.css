@@ -545,6 +545,7 @@ button{
 .shared-category_grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
     gap: 15px;
     padding: 20px;
 }
@@ -567,16 +568,31 @@ button{
     margin: 0;
 }
 
-.shared-category_link {
-    text-decoration: none;
-    color: #333;
-    display: block;
-    padding: 5px 0;
+.add-shared-category_title{
+    border: none;
+    padding: 3px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+.add-shared-category_color{
+    border: none;
+    background-color: inherit;
+    width: 70px;
+
+}
+.add-shared-category_form{
+    margin: 10px 0;
+}
+.add-shared-category_row{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.shared-category_link:hover {
-    text-decoration: underline;
-}
+
+
 
 
 

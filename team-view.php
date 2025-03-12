@@ -29,6 +29,7 @@ if (!$isTeamOwner && !$isTeamMember) {
 <?php endif; ?>
     <h3 class="minor-header">Categories in this team:</h3>
         <div class="shared-category_grid">
+            <?php require_once 'add-shared-category.php'?>
             <?php require_once 'shared-category.php'?>
         </div>
 <?php require_once 'footer.php';

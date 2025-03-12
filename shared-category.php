@@ -11,7 +11,7 @@ $query->execute([
 ]);
 $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<div class="nav-categories">
+
     <?php foreach ($categories as $category):?>
         <div class="shared-category_item" style="background-color: <?= $category['color']; ?>">
             <h3 class="shared-category_header"><?= $category['title']; ?></h3>

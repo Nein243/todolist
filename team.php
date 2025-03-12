@@ -1,7 +1,7 @@
 <?php
 require_once 'handler/function.php';
 
-$teams = getAllById('teams', $_SESSION['id']);
+$teams = getAllById('teams', 'owner_id', $_SESSION['id']);
 
 ?>
 <div class="nav-categories">

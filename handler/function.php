@@ -199,20 +199,19 @@ function isTeamMember(int $idUser, int $idTeam): bool
 //    }
 //    return false;
 //}
-
+//TODO РАЗДЕЛИТЬ ФУНКЦИЮ
 function insertCategory(string  $table, string $title,
-                        string  $color, int $userId,
+                        string  $color, ?int $userId = null,
                         ?string $teamId = null): void
 {
     if ($teamId !== null) {
         $query = getPDO()->prepare("
-                INSERT INTO $table(title, color, user_id, team_id)
-                VALUES (:title, :color, :user_id, :team_id)
+                INSERT INTO $table(title, color, team_id)
+                VALUES (:title, :color, :team_id)
                 ");
         $query->execute([
             'title' => $title,
             'color' => $color,
-            'user_id' => $userId,
             'team_id' => $teamId
         ]);
     } else {

@@ -543,14 +543,31 @@ button{
     border-radius: 15px;
 }
 .shared-category_grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: 200px;
-    gap: 15px;
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 60%;
+}
+.shared-category_add-task{
+    width: 400px;
+    height: 490px;
+    position: fixed;
+    right: 40px;
+    top: 15%;
+
+}
+.shared-category_container{
+    display: flex;
+    gap: 20px;
+    width: 97%;
 }
 
+
+
 .shared-category_item {
+    width: 200px;
+    height: 175px;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -590,7 +607,22 @@ button{
     justify-content: center;
     align-items: center;
 }
+a {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
 
+a:visited, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
+.task-box{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
 
 
 

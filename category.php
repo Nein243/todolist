@@ -1,13 +1,6 @@
 <?php
 require_once 'handler/function.php';
-$query = getPDO()->prepare('
-                            SELECT * FROM categories
-                            WHERE user_id = :user_id
-                            ');
-$query->execute([
-    'user_id' => $_SESSION['id']
-]);
-$categories = $query->fetchAll(PDO::FETCH_ASSOC);
+$categories = getAllById('categories', 'user_id', $_SESSION['id']);
 ?>
 <div class="nav-categories">
 <?php foreach ($categories as $category):?>

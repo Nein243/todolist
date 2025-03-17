@@ -4,7 +4,7 @@
 //TODO КРЕСТИК ЗАКРЫТИЯ
 ?>
     <div class="add-shared-category_form hide">
-        <form action="handler/add-shared-category_handler.php"
+        <form action="handler/add-team-category_handler.php"
               id="addSharedCategory"
               method="post">
             <input type="hidden" name="teamId" value="<?= $_GET['id']?>">

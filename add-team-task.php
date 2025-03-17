@@ -2,17 +2,17 @@
 session_start();
 require_once 'handler/function.php';
 
-$categories = getAllById('categories', 'user_id', $_SESSION['id']);
+$categories = getAllById('team_categories', 'team_id', $_GET['id']);
 $title = 'Add task';
 require_once "header.php";
 require_once 'nav.php';
 ?>
-    <h1 class="main-header">Add a task</h1>
- <?php if (empty($categories)): ?>
+<?php if (empty($categories)): ?>
     <h2 class="">Create a category before making a task</h2>
 <?php else:?>
+    <h1 class="main-header">Add a task</h1>
     <div class="task-item task-item_form">
-        <form action="handler/add_task_handler.php" class="task-form" method="post">
+        <form action="handler/add-team-task_handler.php" class="task-form" method="post">
             <div class="task-form_row">
                 <label for="title" class="task-form_label">Enter title</label>
                 <input type="text" name="title" id="title" class="task-form_text" required>
@@ -42,7 +42,7 @@ require_once 'nav.php';
             </div>
         </form>
     </div>
-<?php endif;?>
 <?php
+endif;
 require_once "footer.php";
 ?>

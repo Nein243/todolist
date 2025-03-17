@@ -5,7 +5,6 @@ $teamId = $_POST['teamId'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $color = $_POST['color'];
-    $userId = $_SESSION['id'];
-    insertCategory('shared_categories', $title, $color, $userId, $teamId);
+    insertCategory(table: 'team_categories', title: $title,color: $color, teamId: $teamId);
 }
 redirectToId('../team-view', $teamId);

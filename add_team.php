@@ -1,6 +1,6 @@
 <div class="add-team_hidden">
     <form action="handler/store_team_handler.php" id="add-team" method="post" class="add-category add-team category-form">
-        <label for="title">Enter category name</label>
+        <label for="title">Enter team name</label>
         <input type="text" id="category-name" name="title" class="category-name" required>
         <div class="task-setting_object">
             <button type="submit" title="Submit" name="submit" id="team_submit" class="task-button">

@@ -29,6 +29,41 @@ function getAllById(string $table, string $column, int $id): array
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getCategoriesAndTasksData(string $categoryTable, string $taskTable, int $id): array
+{
+    $query = getPDO()->prepare("
+                        SELECT $categoryTable.title 
+                        AS category_title, $categoryTable.color,
+                        $taskTable.id, $taskTable.text, $taskTable.title 
+                        FROM $categoryTable INNER JOIN $taskTable 
+                        ON $categoryTable.id = $taskTable.category_id 
+                        WHERE category_id = :category_id 
+                        AND  $taskTable.status = 'new'
+  ");
+    $query->execute([
+        'category_id' => $id
+    ]);
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function insertTask(string $table, string $ownerColumn,
+                    string $title, string $text, int $categoryId,
+                    int    $ownerId): void
+{
+    $pdo = getPDO();
+    $query = $pdo->prepare("
+                INSERT INTO $table(title, text,
+                category_id, $ownerColumn)
+                VALUES (:title, :text, :category_id, :user_id)
+");
+    $query->execute([
+        'title' => $title,
+        'text' => $text,
+        'category_id' => $categoryId,
+        'user_id' => $ownerId
+    ]);
+}
+
 function isTeamOwner(int $userId, int $ownerId): bool
 {
     if ($userId === $ownerId) {

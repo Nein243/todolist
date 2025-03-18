@@ -1,14 +1,20 @@
 <?php
 session_start();
 require_once 'handler/function.php';
+$idCategory = $_GET['id'];
+$idTeam = $_SESSION['team_id'];
 if (!isset($_GET['id'])) {
     $_SESSION['warning'] = 'You are not allowed there';
-    redirect('index');
+    redirectToId('team-view', $idTeam);
 }
-    $tasks = getCategoriesAndTasksData('categories', 'tasks', $_GET['id']);
+    $tasks = getCategoriesAndTasksData(
+            'team_categories', 'team_tasks', $idCategory
+            );
+
+
 if (!$tasks){
     $_SESSION['warning'] = 'There are no tasks with this category';
-        redirect('index');
+            redirectToId('team-view', $idTeam);
 }
 $title = $tasks[0]['category_title'];
 require_once 'header.php';

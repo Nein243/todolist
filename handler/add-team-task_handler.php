@@ -1,15 +1,12 @@
 <?php
 session_start();
 require_once 'function.php';
+$idTeam = $_SESSION['team_id'];
 if(isset($_POST['submit'])){
-
-    $pdo = getPDO();
-    $query = $pdo->prepare('INSERT INTO tasks(title, text, category_id, user_id) VALUES (:title, :text, :category_id, :user_id)');
-    $query->execute([
-        'title' => $_POST['title'],
-        'text' => $_POST['text'],
-        'category_id' => $_POST['category_id'],
-        'user_id' => $_SESSION['id']
-    ]);
+    insertTask(
+        'team_tasks', 'team_id',
+        $_POST['title'], $_POST['text'],
+        $_POST['category_id'], $idTeam
+    );
 }
-redirect('../index');
+redirectToId('../team-view', $idTeam);

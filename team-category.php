@@ -1,22 +1,19 @@
 <?php
 require_once 'handler/function.php';
-$query = getPDO()->prepare('
-                            SELECT * FROM team_categories
-                            WHERE team_id = :teamId
-                            ');
-$query->execute([
-    'teamId' => $_GET['id']
-]);
-$categories = $query->fetchAll(PDO::FETCH_ASSOC);
+session_start();
+if (isset($_GET['id'])){
+    $_SESSION['team_id'] = $_GET['id'];
+}
+$categories = getAllById('team_categories', 'team_id', $_GET['id']);
 ?>
 <?php foreach ($categories as $category): ?>
     <div class="shared-category_item" style="background-color: <?= $category['color']; ?>">
         <h3 class="shared-category_header">
-
-                <a href="category-page.php?id=<?= $category['id'] ?>">
+                <a href="team-category-view.php?id=<?= $category['id']
+                //TODO нужно передать айди тимы
+                ?>">
                     <?= $category['title']; ?>
                 </a>
-
         </h3>
         <ul class="shared-category_list">
             <li>

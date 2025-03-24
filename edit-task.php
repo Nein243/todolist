@@ -4,8 +4,6 @@ if (isset($_GET['id'])):;
 $pdo = getPDO();
 $task = getOneById('tasks', $_GET['id']);
 require_once 'header.php';
-require_once 'nav.php';
-
 ?>
     <h1 class="main-header">Edit a task</h1>
     <div class="task-item task-item_form">

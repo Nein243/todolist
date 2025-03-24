@@ -1,6 +1,5 @@
 <?php
 require_once 'header.php';
-require_once 'nav.php';
 ?>
     <h1 class="main-header">To do list</h1>
     <div class="task-grid">

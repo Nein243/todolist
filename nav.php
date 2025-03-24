@@ -62,6 +62,3 @@
         </ul>
     </div>
     <main>
-<?php
-require_once 'user-block.php';
-?>

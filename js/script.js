@@ -32,3 +32,24 @@ $(document).ready(function() {
         });
     });
 
+$(document).ready(function () {
+    $("#add-team-task").hide();
+
+    $("#show-team-task").click(function () {
+        $("#add-team-task").slideToggle(300);
+    });
+});
+
+$(document).ready(function() {
+    var chatWindow = $(".chat_window");
+    chatWindow.scrollTop(chatWindow[0].scrollHeight);
+
+    // Автоскролл при добавлении новых сообщений
+    var observer = new MutationObserver(function() {
+        chatWindow.scrollTop(chatWindow[0].scrollHeight);
+    });
+
+    observer.observe(chatWindow[0], { childList: true });
+});
+
+

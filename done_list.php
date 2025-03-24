@@ -1,6 +1,5 @@
 <?php
 require_once 'header.php';
-require_once 'nav.php';
 ?>
 
     <h1 class="main-header">Done tasks</h1>

@@ -12,7 +12,6 @@ if (!$tasks){
 }
 $title = $tasks[0]['category_title'];
 require_once 'header.php';
-require_once 'nav.php';
 ?>
 
 <h1 class="main-header"><?=$title?> page</h1>

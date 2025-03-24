@@ -29,6 +29,31 @@ function getAllById(string $table, string $column, int $id): array
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getAllByIdAndTeam(string $table, int $idTeam): array
+{
+    $query = getPDO()->prepare("
+                        SELECT * FROM $table
+                        WHERE id_team = :id_team
+    ");
+    $query->execute([
+        'id_team' => $idTeam
+    ]);
+    return  $query->fetchAll(PDO::FETCH_ASSOC);
+}
+function getMessageAndSender(int $idTeam): array{
+    $query = getPDO()->prepare("
+                            SELECT team_messages.message,
+                            team_messages.created_at, users.id, users.name
+                            FROM team_messages
+                            JOIN users ON team_messages.id_user = users.id
+                            WHERE id_team = :id_team
+    ");
+    $query->execute([
+        'id_team' => $idTeam
+    ]);
+    return  $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function getCategoriesAndTasksData(string $categoryTable, string $taskTable, int $id): array
 {
     $query = getPDO()->prepare("
@@ -262,4 +287,40 @@ function insertCategory(string  $table, string $title,
     }
 }
 
-;
+function getUserAndTeamData(): array
+{
+    $query = getPDO()->prepare("
+                            SELECT users.name, teams.title, teams_to_users.id_team
+                            FROM teams_to_users
+                            INNER JOIN users
+                            ON teams_to_users.id_user = users.id
+                            INNER JOIN teams
+                            ON teams_to_users.id_team = teams.id
+                            WHERE teams_to_users.status = 'accepted'
+");
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function sendMessage(string $message, int $idUser, int $idTeam): void
+{
+    $query = getPDO()->prepare("
+                            INSERT INTO team_messages
+                            (message, id_user, id_team)
+                            VALUES (:message, :id_user, :id_team)
+    ");
+    $query->execute([
+        'message' => $message,
+        'id_user' => $idUser,
+        'id_team' => $idTeam
+    ]);
+}
+function getUnreadMessagesNumber():int{
+    $query = getPDO()->prepare("
+                        SELECT COUNT(*)
+                        FROM team_messages
+                        WHERE status = 'unread'
+    ");
+    $query->execute();
+    return $query->fetchColumn();
+}

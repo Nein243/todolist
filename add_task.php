@@ -4,9 +4,7 @@ require_once 'handler/function.php';
 
 $categories = getAllById('categories', 'user_id', $_SESSION['id']);
 $title = 'Add task';
-require_once "header.php";
-require_once 'nav.php';
-?>
+require_once "header.php"; ?>
     <h1 class="main-header">Add a task</h1>
  <?php if (empty($categories)): ?>
     <h2 class="">Create a category before making a task</h2>

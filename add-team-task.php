@@ -5,13 +5,12 @@ require_once 'handler/function.php';
 $categories = getAllById('team_categories', 'team_id', $_GET['id']);
 $title = 'Add task';
 require_once "header.php";
-require_once 'nav.php';
 ?>
 <?php if (empty($categories)): ?>
     <h2 class="">Create a category before making a task</h2>
 <?php else:?>
-    <h1 class="main-header">Add a task</h1>
-    <div class="task-item task-item_form">
+    <h1 class="main-header" id="show-team-task">Add a task</h1>
+    <div class="task-item task-item_form" id="add-team-task">
         <form action="handler/add-team-task_handler.php" class="task-form" method="post">
             <div class="task-form_row">
                 <label for="title" class="task-form_label">Enter title</label>

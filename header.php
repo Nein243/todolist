@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+session_start();
+require_once 'handler/function.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -48,6 +51,12 @@
         <button class="category-warning-button yellow-button">OK</button>
     </div>
 </div>
+<?php
+require_once 'nav.php';
+require_once 'user-block.php';
+require_once 'team-chat.php';
+
+
 
 
 
